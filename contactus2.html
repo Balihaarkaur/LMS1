@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9AD0C2; /* Light grey background color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url(bg2.jpg);
+            
+        }
+        .header img{
+            margin-top: -10px;
+    margin-right: 0px;
+    padding-left: 550px;
+    padding-right: 0px;
+    padding-top: 0px;
+    image-orientation: none;
+            }
+
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .contact-form {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .reach-us {
+            flex: 1;
+            padding: 20px;
+            background-color:#9AD0C2;
+            color:#333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .contact-form label,
+        .reach-us p {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .contact-form button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="contact-container">
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="button" onclick="sendEmail()">Submit</button>
+            </form>
+        </div>
+        <div class="reach-us">
+            <h2>Reach Us</h2>
+            <p>Email: findmyread@gmail.com</p>
+            <p>Phone: +91 6789123989</p>
+            <p>Address: Palika Kendra Building, Connaught Place, Delhi 110001</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        emailjs.init("balihaarkaur1123@gmail.com"); // Replace with your User ID
+
+        function sendEmail() {
+            const form = document.getElementById("contactForm");
+            const formData = new FormData(form);
+
+            emailjs.sendForm("service_your_service_id", "template_your_template_id", formData)
+                .then((response) => {
+                    console.log("Email sent successfully", response);
+                    alert("Form submitted successfully!");
+                })
+                .catch((error) => {
+                    console.error("Error sending email", error);
+                    alert("Error submitting form. Please try again later.");
+                });
+        }
+    </script>
+</body>
+
+</html>
